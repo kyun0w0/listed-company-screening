@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>상장사 타겟 스크리닝</title>
+  <script>
+    if (window.innerWidth <= 760 && !window.location.pathname.endsWith("/mobile.html")) {
+      window.location.replace("mobile.html");
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
