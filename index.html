@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>상장사 타겟 스크리닝</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>상장사 타겟 스크리닝</h1>
+        <div class="criteria">
+          <p><strong>기준</strong> 시가총액 3,000억 이하, 최근 3개년 결산 순이익 흑자</p>
+          <p><strong>제외</strong> 우선주, 리츠, 저축은행, 증권사, 창투사, 거래정지, 한국상장중국기업, 대기업 지주사 및 자회사, 경영권 분쟁중인 기업 등</p>
+        </div>
+      </div>
+      <div class="meta">
+        <span id="rowCount">전체 0개사</span>
+        <span id="visibleCount">표시 0개사</span>
+        <span>단위: 억원</span>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <section class="results" aria-label="List 탭 데이터">
+        <div class="searchbar" aria-label="검색">
+          <label for="searchInput">종목명 검색</label>
+          <input id="searchInput" type="search" placeholder="예: 파트론">
+          <div class="view-tabs" role="tablist" aria-label="보기 전환">
+            <button class="active" id="tableViewBtn" type="button">테이블</button>
+            <button id="cardViewBtn" type="button">카드</button>
+          </div>
+        </div>
+
+        <div class="sort-panel" aria-label="정렬 기준">
+          <span class="sort-label">정렬</span>
+          <div class="sort-actions">
+            <button type="button" class="sort-btn active" data-sort="marketCap-desc">시가총액 ↓</button>
+            <button type="button" class="sort-btn" data-sort="marketCap-asc">시가총액 ↑</button>
+            <button type="button" class="sort-btn" data-sort="avgPer-asc">PER ↑</button>
+            <button type="button" class="sort-btn" data-sort="avgPer-desc">PER ↓</button>
+            <button type="button" class="sort-btn" data-sort="avgRevenue-desc">3년 평균 매출 ↓</button>
+            <button type="button" class="sort-btn" data-sort="avgRevenue-asc">3년 평균 매출 ↑</button>
+            <button type="button" class="sort-btn" data-sort="avgOperatingProfit-desc">3년 평균 영업이익 ↓</button>
+            <button type="button" class="sort-btn" data-sort="avgOperatingProfit-asc">3년 평균 영업이익 ↑</button>
+            <button type="button" class="sort-btn" data-sort="avgNetIncome-desc">3년 평균 순이익 ↓</button>
+            <button type="button" class="sort-btn" data-sort="avgNetIncome-asc">3년 평균 순이익 ↑</button>
+            <button type="button" class="sort-btn" data-sort="majorShareholderRatio-desc">지분율 ↓</button>
+            <button type="button" class="sort-btn" data-sort="majorShareholderRatio-asc">지분율 ↑</button>
+            <button type="button" class="sort-btn" data-sort="name-asc">종목명 ↑</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" id="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>종목명</th>
+                <th>종목코드</th>
+                <th>시가총액</th>
+                <th>매출액(3년평균)</th>
+                <th>영업이익(3년평균)</th>
+                <th>당기순이익(3년평균)</th>
+                <th>PER(3년평균)</th>
+                <th>대주주/특관+자사주</th>
+              </tr>
+            </thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+        </div>
+
+        <div class="cards hidden" id="cardWrap"></div>
+      </section>
+    </section>
+  </main>
+
+  <div class="note-modal hidden" id="noteModal" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+    <div class="note-dialog">
+      <div class="note-dialog-head">
+        <h2 id="noteTitle">비고</h2>
+        <button type="button" id="noteClose" aria-label="닫기">닫기</button>
+      </div>
+      <p id="noteText"></p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
