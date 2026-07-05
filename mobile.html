@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>상장사 타겟 스크리닝 모바일</title>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <main class="mobile-shell">
+    <header class="mobile-header">
+      <h1>상장사 타겟 스크리닝</h1>
+      <div class="criteria">
+        <p><strong>기준</strong> 시가총액 3,000억 이하, 최근 3개년 결산 순이익 흑자</p>
+        <p><strong>제외</strong> 우선주, 리츠, 저축은행, 증권사, 창투사, 거래정지, 한국상장중국기업, 대기업 지주사 및 자회사, 경영권 분쟁중인 기업 등</p>
+      </div>
+      <div class="count-row">
+        <span id="rowCount">전체 0개사</span>
+        <span id="visibleCount">표시 0개사</span>
+      </div>
+    </header>
+
+    <section class="control-panel">
+      <label for="searchInput">종목명 검색</label>
+      <input id="searchInput" type="search" placeholder="예: 파트론">
+      <div class="sort-head">
+        <span>정렬</span>
+        <strong id="sortLabel">시가총액 높은순</strong>
+      </div>
+      <div class="sort-scroll" aria-label="정렬 기준">
+        <button type="button" class="sort-btn active" data-sort="marketCap-desc">시총 ↓</button>
+        <button type="button" class="sort-btn" data-sort="marketCap-asc">시총 ↑</button>
+        <button type="button" class="sort-btn" data-sort="avgPer-asc">PER ↑</button>
+        <button type="button" class="sort-btn" data-sort="avgPer-desc">PER ↓</button>
+        <button type="button" class="sort-btn" data-sort="avgRevenue-desc">매출 ↓</button>
+        <button type="button" class="sort-btn" data-sort="avgRevenue-asc">매출 ↑</button>
+        <button type="button" class="sort-btn" data-sort="avgOperatingProfit-desc">영업이익 ↓</button>
+        <button type="button" class="sort-btn" data-sort="avgOperatingProfit-asc">영업이익 ↑</button>
+        <button type="button" class="sort-btn" data-sort="avgNetIncome-desc">순이익 ↓</button>
+        <button type="button" class="sort-btn" data-sort="avgNetIncome-asc">순이익 ↑</button>
+        <button type="button" class="sort-btn" data-sort="majorShareholderRatio-desc">지분율 ↓</button>
+        <button type="button" class="sort-btn" data-sort="majorShareholderRatio-asc">지분율 ↑</button>
+        <button type="button" class="sort-btn" data-sort="name-asc">종목명 ↑</button>
+      </div>
+    </section>
+
+    <section class="card-list" id="cardList" aria-label="기업 리스트"></section>
+  </main>
+
+  <div class="note-modal hidden" id="noteModal" role="dialog" aria-modal="true" aria-labelledby="noteTitle">
+    <div class="note-dialog">
+      <div class="note-dialog-head">
+        <h2 id="noteTitle">비고</h2>
+        <button type="button" id="noteClose">닫기</button>
+      </div>
+      <p id="noteText"></p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="mobile.js"></script>
+</body>
+</html>
